@@ -1,0 +1,92 @@
+\documentclass[12pt,a4paper]{article}
+\title{A Complete Guide of Neovim}
+\author{Claude Lu}
+
+\usepackage{xcolor}     
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem} %允許自定義bullet
+\usepackage{amsmath, amssymb, amsfonts} %basic package for math expressions.
+\usepackage{listings}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+%表格必用
+\usepackage{multirow}
+\usepackage{hhline, booktabs}
+%enable hyperlink
+\usepackage{hyperref}
+\usepackage{array}
+
+%enable lstlisting
+\usepackage{listings}
+
+\usepackage{framed}
+
+%自定義顏色
+\definecolor{rublue}{HTML}{0036A7}
+\definecolor{rured}{HTML}{D62718}
+\definecolor{vscodegreen}{HTML}{4EC9B0}
+\definecolor{vscodeblack}{HTML}{1E1E1E}
+%\definecolor{vscodeblack}{HTML}{4D4D4D}
+\definecolor{vscodeyellow}{HTML}{DCDCAA}
+\definecolor{vscodeblue}{HTML}{569CD6}
+%自定義命令
+\newcommand{\bluetexttt}[1]{\textcolor{blue}{\texttt{#1}}}
+\newcommand{\redtexttt}[1]{\textcolor{red}{\texttt{#1}}}
+\newcommand{\redtext}[1]{\textcolor{red}{#1}}
+
+\newcommand{\rt}[1]{\textcolor{red}{#1}}
+\newcommand{\bt}[1]{\textcolor{blue}{#1}}
+\newcommand{\vsgt}[1]{\textcolor{vscodegreen}{#1}}
+\newcommand{\vsft}[1]{\textcolor{vscodeyellow}{#1}}
+\newcommand{\vsbt}[1]{\textcolor{vscodeblue}{#1}}
+
+\newcommand{\struct}[1]{\colorbox{vscodeblack}{\vsgt{#1}}}
+\newcommand{\function}[1]{\colorbox{vscodeblack}{\vsft{#1}}}
+\newcommand{\macro}[1]{\colorbox{vscodeblack}{\vsbt{#1}}}
+
+
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+
+
+\lstset{
+	basicstyle=\ttfamily, %use typewriter font
+	keywordstyle=\color{blue},%關鍵字顏色
+	commentstyle=\color{teal}, %註釋顏色 
+	stringstyle=\color{red}, % Strings in red
+	tabsize=4, % Set tab size to 4 spaces
+	showspaces=false, % Do not show spaces
+	showstringspaces=true, % Do not show string spaces
+	breaklines=true, %自動換行
+	frame=single %在代碼外加上外框
+}
+\begin{document}
+\maketitle
+
+\section{lua}
+\begin{enumerate}
+	\item put \bt{init.lua} under \textbf{\textasciitilde/.config/nvim}
+	\item put \bt{.lua} file under \bt{\textasciitilde/.config/nvim/lua}
+	\item One can import table (module) by \bt{require(``module")}
+	\item Better use \bt{require} with \bt{pcall} to increase robustness
+	\item Use \bt{vim.cmd(``comman'')} in lua to pass command to nvim
+\end{enumerate}
+
+\section{Variables}
+\begin{enumerate}
+	\item vim.g
+	\item vim.b
+	\item vim.w
+	\item vim.t
+	\item vim.v
+	\item vim.env
+\end{enumerate}
+
+\section{colorscheme}
+\begin{footnotesize}
+\begin{verbatim}
+:colo -- show current active color scheme
+:colo {name} -- load color scheme {name}
+\end{verbatim}
+\end{footnotesize}
+\end{document}
