@@ -65,11 +65,33 @@
 
 \section{lua}
 \begin{enumerate}
+	\item Run lua by \texttt{:lua print("Hello")}
 	\item put \bt{init.lua} under \textbf{\textasciitilde/.config/nvim}
 	\item put \bt{.lua} file under \bt{\textasciitilde/.config/nvim/lua}
-	\item One can import table (module) by \bt{require(``module")}
+	\item One can import table (module) by \bt{require(``module")} (no need to add .lua)
 	\item Better use \bt{require} with \bt{pcall} to increase robustness
-	\item Use \bt{vim.cmd(``comman'')} in lua to pass command to nvim
+	\item Use \bt{vim.cmd(``command'')} in lua to pass command to nvim
+	\item Nvim supports \texttt{init.lua} as the configuration file, which should be put in \texttt{~/.config/nvim/}
+	\item Lua modules should be put at \texttt{~/.config/nvim/lua}
+\end{enumerate}
+How to use lua
+\begin{footnotesize}
+\begin{verbatim}
+-- run lua code
+:lua print("Hello")
+
+-- run an external lua file
+:source ~/path/to/file.lua
+
+-- Use Lua file on startup
+
+\end{verbatim}
+\end{footnotesize}
+
+\subsection{Import Lua Modules}
+\begin{enumerate}
+	\item Modules are searched for under \bt{runtimepath}, any `\bt{.}' appeared is treated as \textbf{directory seperator}
+	\item Neovim will search for the first module found
 \end{enumerate}
 
 \section{Variables}
@@ -82,6 +104,21 @@
 	\item vim.env
 \end{enumerate}
 
+\section{runtimepath}
+\begin{enumerate}
+	\item 
+	\item \texttt{:echo \&runtimepath} show runtimepath
+\end{enumerate}
+
+\begin{footnotesize}
+\begin{verbatim}
+-- in init.lua
+-- vim.o is a global table
+vim.o.runtimepath = vim.o.runtimepath..',/path/to/new/runtime/directory'
+\end{verbatim}
+\end{footnotesize}
+
+
 \section{colorscheme}
 \begin{footnotesize}
 \begin{verbatim}
@@ -89,4 +126,16 @@
 :colo {name} -- load color scheme {name}
 \end{verbatim}
 \end{footnotesize}
+
+\section{lazy.nvim}
+\begin{footnotesize}
+\begin{verbatim}
+:checkhealth lazy
+:echo stdpath('config')
+
+-- add following code in our init.lua
+require("config.lazy")
+\end{verbatim}
+\end{footnotesize}
 \end{document}
+
